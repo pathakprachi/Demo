@@ -1,0 +1,222 @@
+=import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class SelectDemo {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		WebDriverManager.chromedriver().setup();
+		WebDriver driver = new  ChromeDriver();
+		driver.manage().window().maximize();
+		driver.get("http://ditinstitute.in/detail.php");
+		Select s = new Select(driver.findElement(By.xpath("//*[@id=\"continents\"]")));
+		//s.selectByIndex(3);
+		s.selectByVisibleText("Antartica");
+
+	}
+
+}
+---------------
+
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class Uploadingfiles {
+	public static void main(String[] args) {
+	WebDriverManager.chromedriver().setup();
+	WebDriver driver = new  ChromeDriver();
+	driver.manage().window().maximize();
+driver.get("http://ditinstitute.in/detail.php");
+	
+		
+	 driver.findElement(By.xpath("//*[@id=\"photo\"]")).sendKeys("D:\\Pic.png");
+	 driver.findElement(By.xpath("//*[@id=\"photo\"]")).click();
+	
+
+	}
+}
+-------------- DragandDrop 
+
+public class DragandDrop {
+
+	public static void main(String[] args) {
+
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+		driver.get("http://jqueryui.com/droppable/");
+		driver.switchTo().frame(0);
+		WebElement source = driver.findElement(By.xpath("//*[@id=\"draggable\"]"));
+		
+		WebElement dest = 	driver.findElement(By.xpath("//*[@id=\"droppable\"]"));
+		
+		//Click on the source element and hold then drop it.
+		Actions action = new Actions(driver);
+		
+		action.clickAndHold(source).moveToElement(dest).release().build().perform();
+		//action.dragAndDrop(source, dest).build().perform();
+
+	}
+
+}
+
+
+package com.smb.webdriver;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+
+public class PopUp {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver = new  ChromeDriver();
+		driver.manage().window().maximize();
+		
+		driver.manage().deleteAllCookies();
+		
+		driver.get("https://mail.rediff.com/cgi-bin/login.cgi");
+		driver.findElement(By.name("proceed")).click();
+		
+		Alert alt = driver.switchTo().alert();
+		Thread.sleep(5000); //5sec
+		//alt.accept();
+		alt.dismiss();
+		}
+
+}
+=================== Right click
+
+public class RightClick {
+
+	public static void main(String[] args) {
+		
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+		
+		
+		driver.get("https://swisnl.github.io/jQuery-contextMenu/demo.html");
+		
+		Actions action = new Actions(driver);
+		
+		WebElement rightclick = driver.findElement(By.xpath("/html/body/div/section/div/div/div/p/span"));
+		
+		action.contextClick(rightclick).build().perform();
+		
+		
+
+
+	}
+
+}
+======================  Double Click
+public class RightClick {
+
+	public static void main(String[] args) {
+		
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+		
+		
+		driver.get("https://demo.guru99.com/test/simple_context_menu.html");
+		
+		Actions action = new Actions(driver);
+		
+		WebElement rightclick = driver.findElement(By.xpath("//*[@id=\"authentication\"]/button"));
+		
+		action.doubleClick(rightclick).build().perform();
+		
+		
+
+
+	}
+
+}
+[02/07, 8:52 am] Dev: ======================Frame 
+
+
+public class Frame {
+
+	public static void main(String[] args) throws InterruptedException, IOException {
+		WebDriverManager.chromedriver().setup();
+		
+		WebDriver driver = new ChromeDriver();
+				
+	driver.manage().window().maximize();
+	Thread.sleep(6000);
+	driver.get("https://www.selenium.dev/selenium/docs/api/java/index.html?overview-summary.html");
+	Thread.sleep(3000);
+	driver.switchTo().frame(2);
+	driver.findElement(By.linkText("org.openqa.selenium")).click();
+	
+	driver.switchTo().defaultContent();
+	driver.switchTo().frame(0);
+	Thread.sleep(2000);
+	driver.findElement(By.linkText("org.openqa.selenium.bidi")).click();
+
+
+==============Screen Shot
+File srcfile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+	// or File Destfile = new File("Path of destination ");
+	//FileUtils.copyFile(SrcFile, Destfile);
+	FileUtils.copyFile(srcfile, new File("D:\\Test02.png"));
+=============================Handlecookies 
+
+public class Handlecookies {
+
+	public static void main(String[] args) {
+		
+		
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+		
+		driver.get("http://the-internet.herokuapp.com/upload");
+		
+		driver.manage().deleteAllCookies();
+
+	}
+
+========================== SubMenuClick 
+
+
+public class SubMenuClick {
+
+	public static void main(String[] args) throws InterruptedException {
+		
+		WebDriverManager.chromedriver().setup();
+
+		WebDriver driver = new ChromeDriver();
+
+		driver.manage().window().maximize();
+			
+
+
+
+		
+
+
